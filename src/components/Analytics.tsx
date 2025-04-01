@@ -3,15 +3,16 @@ import Script from "next/script";
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
+    dataLayer: object[];
+    gtag: (command: "config" | "event", id: string, params?: object) => void;
   }
 }
 
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 
-// Initialize Google Analytics
 export const GAScript = () => {
+  if (!GA_TRACKING_ID) return null;
+
   return (
     <>
       <Script
@@ -52,7 +53,7 @@ export const GAEvent = (
     category?: string;
     label?: string;
     value?: number;
-    [key: string]: any;
+    [key: string]: string | number | undefined;
   },
 ) => {
   if (typeof window.gtag === "function") {

@@ -1,83 +1,89 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
-
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0a0a0a;
-        --foreground: #ededed;
-    }
-}
-
-body {
-    background: var(--background);
-    color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
-    @apply bg-black text-white antialiased;
-}
-
-/* Custom base styles */
 @layer base {
-    html {
-        @apply scroll-smooth;
+    * {
+        @apply transition-colors duration-200;
+    }
+    :root {
+        --color-primary-deep: #0d5c63;
+        --color-primary-faded: #bfd2e0;
+        --color-accent-teal: #008080;
+        --color-neutral-pale: #e0f7fa;
+        --color-dark-background: #121726;
+        --color-light-background: #f5f7fa;
     }
     body {
-        @apply bg-neutral-950 text-neutral-100 antialiased;
+        @apply m-[0] p-[0]; /* Remove default margin/padding */
     }
 }
 
-/* Custom components */
 @layer components {
-    .link-button {
-        @apply w-full p-4 mb-3 text-center rounded-lg
-           bg-white/5 hover:bg-white/10 backdrop-blur-sm
-           border border-white/10
-           transition-all duration-200
-           text-neutral-100 hover:text-white
-           active:scale-95;
+    .logo-glow {
+        box-shadow: 0 0 40px 10px rgba(0, 128, 128, 0.15);
+        filter: drop-shadow(0 0 20px rgba(0, 128, 128, 0.3));
+        transition: all 0.3s ease;
     }
 
-    .profile-image {
-        @apply w-24 h-24 sm:w-32 sm:h-32
-           border-2 border-white/10
-           hover:rotate-3 transition-transform duration-300;
+    .logo-glow:hover {
+        box-shadow: 0 0 50px 15px rgba(0, 128, 128, 0.25);
+        filter: drop-shadow(0 0 25px rgba(0, 128, 128, 0.4));
     }
 }
 
-@keyframes float {
-    0%,
-    100% {
-        transform: translateY(0);
+@layer utilities {
+    /* Custom Animations */
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
     }
-    50% {
-        transform: translateY(-8px);
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
     }
-}
 
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes pulse-slow {
-    0%,
-    100% {
-        opacity: 0.2;
+    @keyframes particle-pulse {
+        0%,
+        100% {
+            opacity: 0.1;
+            transform: scale(0.5);
+        }
+        50% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
     }
-    50% {
-        opacity: 0.4;
-    }
-}
 
-.animate-pulse-slow {
-    animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @keyframes particle-drift {
+        0% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(10px, -10px);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    .animate-particle-drift {
+        animation: particle-drift 10s linear infinite;
+    }
+
+    .particle {
+        @apply absolute w-[0.25rem] h-[0.25rem] rounded-full bg-[rgba(191,210,224,0.5)]
+                   animate-[particle-pulse_5s_ease-in-out_infinite,particle-drift_10s_linear_infinite];
+        position: absolute;
+        top: random(100) %;
+        left: random(100) %;
+    }
+
+    .particle-container {
+        @apply relative w-full h-full overflow-hidden;
+    }
 }
