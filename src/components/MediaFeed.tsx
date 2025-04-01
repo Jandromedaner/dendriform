@@ -28,8 +28,8 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
                 ${
                   activeMedia === link.mediaType
                     ? isDarkMode
-                      ? "bg-[#60a5fa] text-[#111827]" // Active dark
-                      : "bg-[#2563eb] text-[#ffffff]" // Active light
+                      ? "bg-[#93c5fd] text-[#111827]" // Active dark
+                      : "bg-[#93c5fd] text-[#111827]" // Active light
                     : isDarkMode
                       ? "bg-[#e5e7eb] text-[#374151]" // Inactive dark
                       : "bg-[#374151] text-[#d1d5db]" // Inactive light

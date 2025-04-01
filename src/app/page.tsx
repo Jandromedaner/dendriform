@@ -129,15 +129,15 @@ export default function Home() {
         className={`fixed top-[16px] left-[16px] rounded-full font-medium transition-all duration-300 z-[9999]
           ${
             isDarkMode
-              ? "hover:bg-[#93c5fd] shadow-lg shadow-[rgba(96, 165, 250, 1)]"
-              : "bg-[#374151] hover:bg-[#93c5fd] text-[#ffffff] shadow-lg shadow-[rgba(37, 99, 235, 1)"
+              ? "hover:bg-[#93c5fd]"
+              : "bg-[#374151] hover:bg-[#93c5fd] text-[#ffffff]"
           }`}
       >
         {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
       </button>
       {/* Main Content Container */}
       <div
-        className={`relative z-10 w-full max-w-md ${isDarkMode ? "bg-gray-800/80" : "bg-white/80"}  rounded-2xl shadow-2xl border border-gray-600/10 p-[1rem] mx-4`}
+        className={`relative z-10 w-full overflow-x-hidden max-w-md ${isDarkMode ? "bg-gray-800/80" : "bg-white/80"}  rounded-2xl shadow-2xl border border-gray-600/10 p-[1rem] mx-4`}
       >
         {/* Logo and Content Section */}
         <div className="relative z-10 w-full flex flex-col items-center top-[32px]">
@@ -156,24 +156,26 @@ export default function Home() {
               }}
             />
           </div>
-
-          <div className="text-center space-y- w-full max-w-[400px]">
-            <h1
-              className={`text-3xl font-bold mb-2 transition-colors
+          {/* center div */}
+          <div className="flex justify-center">
+            <div className="text-center space-y- w-full max-w-[calc(100vw-32px)]">
+              <h1
+                className={`text-3xl font-bold mb-2 transition-colors
               ${isDarkMode ? "text-[#e0f7fa]" : "text-white"}`}
-            >
-              Dendriform
-            </h1>
-            <p
-              className={`text-lg transition-colors
+              >
+                Dendriform
+              </h1>
+              <p
+                className={`text-lg transition-colors
               ${isDarkMode ? "text-[#e0f7fa]" : "text-white"}`}
-            >
-              Audiovisual Resonance
-            </p>
+              >
+                Audiovisual Resonance
+              </p>
 
-            {/* Links */}
-            <div className="flex flex-col items-center space-y-4 pt-4 w-full ml-4 inline-block px-6 py-3 rounded-lg font-medium transition-all">
-              <MediaFeed isDarkMode={isDarkMode} />
+              {/* Media */}
+              <div className="flex flex-col items-center space-y-4 pt-4 w-full ml-4 inline-block px-6 py-3 rounded-lg font-medium transition-all">
+                <MediaFeed isDarkMode={isDarkMode} />
+              </div>
             </div>
           </div>
         </div>
