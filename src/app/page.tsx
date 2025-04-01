@@ -1,5 +1,4 @@
 "use client";
-import { LINKS } from "@/data/links";
 import MediaFeed from "@/components/MediaFeed";
 import { GAScript, trackPageView } from "@/components/Analytics";
 import Image from "next/image";
@@ -127,11 +126,11 @@ export default function Home() {
       {/* Dark Mode Toggle */}
       <button
         onClick={toggleDarkMode}
-        className={`fixed top-[16px] left-[16px] px-4 py-2 rounded-full font-medium transition-all duration-300 z-[9999]
+        className={`fixed top-[16px] left-[16px] rounded-full font-medium transition-all duration-300 z-[9999]
           ${
             isDarkMode
-              ? "bg-blue-400 hover:bg-blue-300 text-gray-900 shadow-lg shadow-blue-400/30"
-              : "bg-[#374151] hover:bg-blue-700 text-[#ffffff] shadow-lg shadow-blue-600/30"
+              ? "hover:bg-[#93c5fd] shadow-lg shadow-[rgba(96, 165, 250, 1)]"
+              : "bg-[#374151] hover:bg-[#93c5fd] text-[#ffffff] shadow-lg shadow-[rgba(37, 99, 235, 1)"
           }`}
       >
         {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}

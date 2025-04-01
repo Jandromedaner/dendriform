@@ -38,7 +38,7 @@ export const LINKS: Link[] = [
       {
         id: "ig-1",
         embedUrl: "https://www.instagram.com/reel/C-D2VHkO6Ut/embed",
-        title: "Latest Post",
+        title: `Cover of "Eden" - by @Hania Rani`,
       },
     ],
   },
@@ -51,7 +51,7 @@ export const LINKS: Link[] = [
         id: "sc-1",
         embedUrl:
           "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1748825088&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true",
-        title: "Latest Track",
+        title: `Cover of "Idea 10" - by @Gibran Alcocer`,
       },
     ],
   },

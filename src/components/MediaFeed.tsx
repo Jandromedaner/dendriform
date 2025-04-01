@@ -1,8 +1,6 @@
-// components/MediaFeed.tsx
 "use client";
 import { LINKS, MediaType } from "@/data/links";
 import { useState } from "react";
-import { FiYoutube, FiMusic } from "react-icons/fi";
 
 interface MediaFeedProps {
   isDarkMode: boolean;
@@ -19,9 +17,9 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
       className={`min-h-screen ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
       {/* Media Feed Content */}
-      <div className="pt-[8px] pb-[8px] px-[4px]  max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto space-y-6">
         {/* Media Type Selector */}
-        <div className="flex justify-center gap-[2px] overflow-x-auto pb-2 ">
+        <div className="flex justify-center overflow-x-auto pb-[16px]">
           {mediaLinks.map((link) => (
             <button
               key={link.url}
