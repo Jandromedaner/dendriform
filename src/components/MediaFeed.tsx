@@ -17,14 +17,14 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
       className={`min-h-screen ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
       {/* Media Feed Content */}
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto">
         {/* Media Type Selector */}
         <div className="flex justify-center overflow-x-auto pb-[16px]">
           {mediaLinks.map((link) => (
             <button
               key={link.url}
               onClick={() => setActiveMedia(link.mediaType as MediaType)}
-              className={`px-[4px] py-[2px] rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0
+              className={`px-[4px] py-[2px] rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 mx-[6px]
                 ${
                   activeMedia === link.mediaType
                     ? isDarkMode
@@ -41,7 +41,8 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
         </div>
 
         {/* Media Embeds */}
-        <div className="space-y-6">
+        <div className="space-y-[16px]">
+          {/* space between content media */}
           {mediaLinks
             .find((link) => link.mediaType === activeMedia)
             ?.mediaContent?.map((content) => (

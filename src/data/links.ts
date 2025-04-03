@@ -32,11 +32,16 @@ export const LINKS: Link[] = [
   },
   {
     title: "Instagram",
-    url: "https://instagram.com/ariettable",
+    url: "https://instagram.com/dendri.form",
     mediaType: "instagram",
     mediaContent: [
       {
         id: "ig-1",
+        embedUrl: "https://www.instagram.com/reel/DH8pir9ox67/embed",
+        title: `Cmadd9🌟`,
+      },
+      {
+        id: "ig-2",
         embedUrl: "https://www.instagram.com/reel/C-D2VHkO6Ut/embed",
         title: `Cover of "Eden" - by @Hania Rani`,
       },
