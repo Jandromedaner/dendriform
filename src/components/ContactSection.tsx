@@ -38,7 +38,7 @@ export default function ContactSection({
         <h2
           className={`text-4xl font-bold mb-16 text-center ${isDarkMode ? "text-[#e0f7fa]" : "text-[#121726]"} font-serif tracking-wide`}
         >
-          Let's Create Together
+          Let&apos;s Create Together
         </h2>
 
         <div className="space-y-8">
