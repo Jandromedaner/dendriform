@@ -2,6 +2,7 @@
 import MediaFeed from "@/components/MediaFeed";
 import { GAScript, trackPageView } from "@/components/Analytics";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
 import { useState, useEffect, useId, useCallback } from "react";
@@ -107,6 +108,7 @@ export default function Home() {
     >
       <GAScript />
       <Analytics />
+      <SpeedInsights />
       {/* Particle Background */}
       <div className="particle-container fixed inset-0 z-0 bg-blue-500/90">
         <div className="relative h-full w-full">
