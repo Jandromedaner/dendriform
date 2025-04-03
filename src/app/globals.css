@@ -16,6 +16,10 @@
     }
     body {
         @apply m-[0] p-[0]; /* Remove default margin/padding */
+        scroll-behavior: smooth;
+    }
+    html {
+        scroll-behavior: smooth;
     }
 }
 
@@ -50,11 +54,11 @@
     @keyframes particle-pulse {
         0%,
         100% {
-            opacity: 0.1;
+            opacity: 1;
             transform: scale(0.5);
         }
         50% {
-            opacity: 0.3;
+            opacity: 0.2;
             transform: scale(1);
         }
     }
@@ -75,6 +79,10 @@
         animation: particle-drift 10s linear infinite;
     }
 
+    .animate-particle-pulse {
+        animation: particle-pulse 2.5s ease-in-out infinite;
+    }
+
     .particle {
         @apply absolute w-[0.25rem] h-[0.25rem] rounded-full bg-[rgba(191,210,224,0.5)]
                    animate-[particle-pulse_5s_ease-in-out_infinite,particle-drift_10s_linear_infinite];
@@ -84,6 +92,6 @@
     }
 
     .particle-container {
-        @apply relative w-full h-full overflow-hidden;
+        @apply pointer-events-none relative w-full h-full overflow-hidden;
     }
 }

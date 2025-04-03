@@ -1,7 +1,9 @@
 "use client";
 import MediaFeed from "@/components/MediaFeed";
 import { GAScript, trackPageView } from "@/components/Analytics";
+import { Analytics } from "@vercel/analytics/react";
 import Image from "next/image";
+import ContactSection from "@/components/ContactSection";
 import { useState, useEffect, useId, useCallback } from "react";
 
 interface Particle {
@@ -51,7 +53,7 @@ export default function Home() {
   // Create particle effect
   useEffect(() => {
     const createParticles = () => {
-      const particleCount = 50;
+      const particleCount = 110;
       const particleColors = [
         "#3B82F6", // Blue
         "#10B981", // Emerald
@@ -104,23 +106,26 @@ export default function Home() {
       className={`min-h-screen w-screen overflow-hidden ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
       <GAScript />
+      <Analytics />
       {/* Particle Background */}
-      <div className="particle-container absolute inset-0 z-0 bg-blue-500/90">
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className="animate-particle-drift"
-            style={{
-              position: "absolute",
-              left: `${particle.x}px`,
-              top: `${particle.y}px`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              backgroundColor: particle.color,
-              borderRadius: "50%",
-            }}
-          />
-        ))}
+      <div className="particle-container fixed inset-0 z-0 bg-blue-500/90">
+        <div className="relative h-full w-full">
+          {particles.map((particle) => (
+            <div
+              key={particle.id}
+              className="animate-particle-drift animate-particle-pulse"
+              style={{
+                position: "absolute",
+                left: `${particle.x}px`,
+                top: `${particle.y}px`,
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                backgroundColor: particle.color,
+                borderRadius: "50%",
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Dark Mode Toggle */}
@@ -179,6 +184,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            <ContactSection isDarkMode={isDarkMode} />
           </div>
         </div>
       </div>
