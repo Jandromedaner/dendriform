@@ -28,6 +28,11 @@ export const LINKS: Link[] = [
         embedUrl: "https://www.youtube.com/embed/7JEdE15RygA",
         title: "Cmadd9 - This Close to Quiet",
       },
+      {
+        id: "yt-2",
+        embedUrl: "https://www.youtube.com/embed/TFQVmfxY9YM",
+        title: "Sequence 01",
+      },
     ],
   },
   {
