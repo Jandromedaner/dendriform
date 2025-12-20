@@ -1,6 +1,6 @@
 "use client";
 import MediaFeed from "@/components/MediaFeed";
-import { GAScript, AnalyticsPageViews } from "@/components/Analytics";
+import { AnalyticsPageViews } from "@/components/Analytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
@@ -101,7 +101,6 @@ export default function Home() {
     <div
       className={`min-h-screen w-screen overflow-hidden ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
-      <GAScript />
       <AnalyticsPageViews />
       <SpeedInsights />
       {/* Particle Background */}
