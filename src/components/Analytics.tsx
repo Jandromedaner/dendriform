@@ -1,5 +1,7 @@
 "use client";
 import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -8,7 +10,20 @@ declare global {
   }
 }
 
-const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || "";
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+export function AnalyticsPageViews() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (pathname) {
+      trackPageView(pathname);
+    }
+  }, [pathname, searchParams]);
+
+  return null;
+}
 
 export const GAScript = () => {
   if (!GA_TRACKING_ID) return null;
