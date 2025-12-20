@@ -1,7 +1,6 @@
 "use client";
 import MediaFeed from "@/components/MediaFeed";
-import { GAScript, trackPageView } from "@/components/Analytics";
-import { Analytics } from "@vercel/analytics/react";
+import { AnalyticsPageViews } from "@/components/Analytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
@@ -20,10 +19,6 @@ interface Particle {
 }
 
 export default function Home() {
-  useEffect(() => {
-    trackPageView(window.location.pathname);
-  }, []);
-
   // Dark mode state
   const [isDarkMode, setIsDarkMode] = useState(true);
 
@@ -106,8 +101,7 @@ export default function Home() {
     <div
       className={`min-h-screen w-screen overflow-hidden ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
-      <GAScript />
-      <Analytics />
+      <AnalyticsPageViews />
       <SpeedInsights />
       {/* Particle Background */}
       <div className="particle-container fixed inset-0 z-0 bg-blue-500/90">
