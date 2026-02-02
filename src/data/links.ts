@@ -25,6 +25,11 @@ export const LINKS: Link[] = [
     mediaContent: [
       {
         id: "yt-1",
+        embedUrl: "https://www.youtube.com/embed/Ga62BcDALt4",
+        title: "Glass - Hania Rani",
+      },
+      {
+        id: "yt-1",
         embedUrl: "https://www.youtube.com/embed/TFQVmfxY9YM",
         title: "Sequence 01",
       },
@@ -42,16 +47,21 @@ export const LINKS: Link[] = [
     mediaContent: [
       {
         id: "ig-1",
+        embedUrl: "https://www.instagram.com/reel/DUQcE8VgOPp/embed",
+        title: `Glass - by @Hania Rani`,
+      },
+      {
+        id: "ig-2",
         embedUrl: "https://www.instagram.com/reel/DRZk8V9gsLj/embed",
         title: `As I was - by @Olivia Belli`,
       },
       {
-        id: "ig-2",
+        id: "ig-3",
         embedUrl: "https://www.instagram.com/reel/C-D2VHkO6Ut/embed",
         title: `Cover of "Eden" - by @Hania Rani`,
       },
       {
-        id: "ig-3",
+        id: "ig-4",
         embedUrl: "https://www.instagram.com/reel/DH8pir9ox67/embed",
         title: `Cmadd9🌟`,
       },
