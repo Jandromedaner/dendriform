@@ -29,12 +29,12 @@ export const LINKS: Link[] = [
         title: "Glass - Hania Rani",
       },
       {
-        id: "yt-1",
+        id: "yt-2",
         embedUrl: "https://www.youtube.com/embed/TFQVmfxY9YM",
         title: "Sequence 01",
       },
       {
-        id: "yt-2",
+        id: "yt-3",
         embedUrl: "https://www.youtube.com/embed/7JEdE15RygA",
         title: "Cmadd9 - This Close to Quiet",
       },
