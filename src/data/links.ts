@@ -26,7 +26,7 @@ export const LINKS: Link[] = [
       {
         id: "yt-1",
         embedUrl: "https://www.youtube.com/embed/Ga62BcDALt4",
-        title: "Glass - Hania Rani",
+        title: "Glass - Hania Rani - Visuals by Dendriform",
       },
       {
         id: "yt-2",
