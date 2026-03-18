@@ -1,6 +1,7 @@
 "use client";
 import { LINKS, MediaType } from "@/data/links";
 import { useState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface MediaFeedProps {
   isDarkMode: boolean;
@@ -8,31 +9,45 @@ interface MediaFeedProps {
 
 export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
   const [activeMedia, setActiveMedia] = useState<MediaType>("youtube");
-
-  // Get all links that have media content
   const mediaLinks = LINKS.filter((link) => link.mediaContent);
+
+  const handleMediaSwitch = (mediaType: MediaType, title: string) => {
+    setActiveMedia(mediaType);
+    sendGAEvent("event", "media_tab_switch", {
+      media_type: mediaType,
+      tab_title: title,
+    });
+  };
+
+  const handleMediaLoad = (contentTitle: string, mediaType: MediaType) => {
+    sendGAEvent("event", "media_loaded", {
+      media_type: mediaType,
+      content_title: contentTitle,
+    });
+  };
 
   return (
     <div
       className={`min-h-screen ${isDarkMode ? "bg-[#121726]" : "bg-[#f5f7fa]"}`}
     >
-      {/* Media Feed Content */}
       <div className="max-w-3xl mx-auto">
         {/* Media Type Selector */}
         <div className="flex justify-center overflow-x-auto pb-[16px]">
           {mediaLinks.map((link) => (
             <button
               key={link.url}
-              onClick={() => setActiveMedia(link.mediaType as MediaType)}
+              onClick={() =>
+                handleMediaSwitch(link.mediaType as MediaType, link.title)
+              }
               className={`px-[4px] py-[2px] rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 mx-[6px]
                 ${
                   activeMedia === link.mediaType
                     ? isDarkMode
-                      ? "bg-[#93c5fd] text-[#111827]" // Active dark
-                      : "bg-[#93c5fd] text-[#111827]" // Active light
+                      ? "bg-[#93c5fd] text-[#111827]"
+                      : "bg-[#93c5fd] text-[#111827]"
                     : isDarkMode
-                      ? "bg-[#e5e7eb] text-[#374151]" // Inactive dark
-                      : "bg-[#374151] text-[#d1d5db]" // Inactive light
+                      ? "bg-[#e5e7eb] text-[#374151]"
+                      : "bg-[#374151] text-[#d1d5db]"
                 }`}
             >
               {link.title}
@@ -42,15 +57,14 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
 
         {/* Media Embeds */}
         <div className="space-y-[16px]">
-          {/* space between content media */}
           {mediaLinks
             .find((link) => link.mediaType === activeMedia)
             ?.mediaContent?.map((content) => (
               <div
                 key={content.id}
                 className={`rounded-xl overflow-hidden shadow-lg
-                ${isDarkMode ? "bg-[#e0f7fa]" : "bg-[#f5f7fa]"} border
-                ${isDarkMode ? "border-[#e0f7fa]" : "border-white"}`}
+                  ${isDarkMode ? "bg-[#e0f7fa]" : "bg-[#f5f7fa]"} border
+                  ${isDarkMode ? "border-[#e0f7fa]" : "border-white"}`}
               >
                 <div className="aspect-w-16 aspect-h-9">
                   <iframe
@@ -59,6 +73,9 @@ export default function MediaFeed({ isDarkMode }: MediaFeedProps) {
                     allowFullScreen
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     title={content.title || `${activeMedia} content`}
+                    onLoad={() =>
+                      handleMediaLoad(content.title || activeMedia, activeMedia)
+                    }
                   />
                 </div>
                 {content.title && (

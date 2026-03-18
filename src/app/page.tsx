@@ -2,6 +2,7 @@
 import MediaFeed from "@/components/MediaFeed";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { sendGAEvent } from "@next/third-parties/google";
 import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
 import { useState, useEffect, useId, useCallback, useRef } from "react";
@@ -32,8 +33,12 @@ export default function Home() {
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => {
-      localStorage.setItem("darkMode", String(!prev));
-      return !prev;
+      const next = !prev;
+      localStorage.setItem("darkMode", String(next));
+      sendGAEvent("event", "dark_mode_toggle", {
+        mode: next ? "dark" : "light",
+      });
+      return next;
     });
   };
 
